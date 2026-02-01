@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@shiatsu.marizete | Instagram</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+    <style>
+        :root {
+            --primary: #8B7355;
+            --accent: #C9A962;
+            --dark: #1A1A1A;
+            --light: #FAF8F5;
+            --light-dark: #F0EDE8;
+            --text: #4A4A4A;
+            --text-light: #7A7A7A;
+            --white: #FFFFFF;
+            --instagram-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --gold-gradient: linear-gradient(135deg, #C9A962 0%, #E8D5A3 50%, #C9A962 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .insta-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--light-dark);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .insta-header-content {
+            max-width: 935px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .insta-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .insta-logo i {
+            background: var(--instagram-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-actions a {
+            color: var(--dark);
+            font-size: 22px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .header-actions a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Main Container */
+        .insta-container {
+            max-width: 935px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            gap: 80px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(var(--white), var(--white)) padding-box,
+                var(--instagram-gradient) border-box;
+            padding: 4px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-username {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--dark);
+        }
+
+        .verified-badge {
+            color: #3897f0;
+            font-size: 18px;
+        }
+
+        .profile-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-follow {
+            background: #0095f6;
+            color: var(--white);
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-follow:hover {
+            background: #0086e0;
+        }
+
+        .btn-message {
+            background: var(--light-dark);
+            color: var(--dark);
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-message:hover {
+            background: #e0ddd8;
+        }
+
+        .btn-icon {
+            background: var(--light-dark);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon:hover {
+            background: #e0ddd8;
+        }
+
+        /* Stats */
+        .profile-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .stat-label {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* Bio */
+        .profile-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .profile-category {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .profile-bio {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .profile-bio .emoji {
+            margin-right: 5px;
+        }
+
+        .profile-link {
+            color: #00376b;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .profile-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Highlights */
+        .highlights-section {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .highlight-circle {
+            width: 77px;
+            height: 77px;
+            border-radius: 50%;
+            border: 2px solid var(--light-dark);
+            padding: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-circle:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .highlight-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .highlight-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--light-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--text-light);
+        }
+
+        .highlight-label {
+            font-size: 12px;
+            color: var(--text);
+            max-width: 70px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Tabs */
+        .profile-tabs {
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid var(--light-dark);
+            margin-bottom: 20px;
+        }
+
+        .tab-item {
+            padding: 15px 50px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            cursor: pointer;
+            border-top: 1px solid transparent;
+            margin-top: -1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-item.active {
+            color: var(--dark);
+            border-top-color: var(--dark);
+        }
+
+        .tab-item:hover {
+            color: var(--dark);
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .photo-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .photo-type-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--white);
+            font-size: 20px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Quote Post Style */
+        .photo-item.quote-post {
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .photo-item.quote-post .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--dark);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .insta-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+
+        .insta-footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .insta-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-site {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold-gradient);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-site:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .profile-header {
+                justify-content: center;
+            }
+
+            .profile-username {
+                font-size: 22px;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .profile-bio {
+                text-align: center;
+            }
+
+            .tab-item {
+                padding: 15px 25px;
+            }
+
+            .photo-grid {
+                gap: 2px;
+            }
+
+            .highlights-section {
+                justify-content: flex-start;
+                padding-left: 20px;
+            }
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--light-dark);
+            padding: 10px 0;
+            z-index: 100;
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav a {
+            color: var(--dark);
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .mobile-nav a.active {
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: block;
+            }
+
+            .insta-container {
+                padding-bottom: 80px;
+            }
+        }
+
+        /* Fallback per immagini non caricate */
+        .photo-item img {
+            background-color: var(--light-dark);
+        }
+
+        .photo-item img[src=""],
+        .photo-item img:not([src]) {
+            background: var(--gold-gradient);
+        }
+
+        /* Assicura che le quote siano sempre visibili */
+        .photo-item.quote-post {
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .photo-item.quote-post:hover {
+            opacity: 0.9;
+        }
+
+        .photo-item.quote-post .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--dark);
+            text-align: center;
+            line-height: 1.5;
+            padding: 10px;
+        }
+
+        /* Responsive quote text */
+        @media (max-width: 768px) {
+            .photo-item.quote-post .quote-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="insta-header">
+        <div class="insta-header-content">
+            <a href="index.html" class="insta-logo">
+                <i class="bi bi-instagram"></i>
+                shiatsu.marizete
+            </a>
+            <div class="header-actions">
+                <a href="#"><i class="bi bi-plus-square"></i></a>
+                <a href="#"><i class="bi bi-heart"></i></a>
+                <a href="https://wa.me/393664932878" target="_blank"><i class="bi bi-send"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="insta-container">
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-image-container">
+                <div class="profile-image">
+                    <img src="assets/img/IMG_20260130_195954.png" alt="Shiatsu Marizete"
+                        onerror="this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'">
+                </div>
+            </div>
+
+            <div class="profile-info">
+                <div class="profile-header">
+                    <h1 class="profile-username">shiatsu.marizete</h1>
+                    <i class="bi bi-patch-check-fill verified-badge"></i>
+                    <div class="profile-buttons">
+                        <button class="btn-follow">Segui</button>
+                        <a href="https://wa.me/393664932878?text=Ciao%20Marizete!%20Vorrei%20informazioni%20sui%20trattamenti%20Shiatsu."
+                            class="btn-message" target="_blank">Messaggio</a>
+                        <button class="btn-icon"><i class="bi bi-person-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">156</span>
+                        <span class="stat-label">post</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2.458</span>
+                        <span class="stat-label">follower</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">312</span>
+                        <span class="stat-label">seguiti</span>
+                    </div>
+                </div>
+
+                <div class="profile-name">Shiatsu Marizete ✨ Benessere</div>
+                <div class="profile-category">Salute/Bellezza · Massaggiatore</div>
+                <div class="profile-bio">
+                    <span class="emoji">✨</span> Tecnica di Shiatsu Tradizionale<br>
+                    <span class="emoji">🙌</span> 15+ anni di esperienza<br>
+                    <span class="emoji">📍</span> Pianiga (VE)<br>
+                    <span class="emoji">⬇️</span> Prenota il tuo trattamento
+                </div>
+                <a href="index.html" class="profile-link">www.shiatsumarizete.it</a>
+            </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="highlights-section">
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">✨</div>
+                </div>
+                <span class="highlight-label">Chi Sono</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">🙌</div>
+                </div>
+                <span class="highlight-label">Trattamenti</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">💰</div>
+                </div>
+                <span class="highlight-label">Prezzi</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">📍</div>
+                </div>
+                <span class="highlight-label">Dove Siamo</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">⭐</div>
+                </div>
+                <span class="highlight-label">Recensioni</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">❓</div>
+                </div>
+                <span class="highlight-label">FAQ</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-circle">
+                    <div class="highlight-icon">🎁</div>
+                </div>
+                <span class="highlight-label">Promo</span>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <div class="profile-tabs">
+            <div class="tab-item active">
+                <i class="bi bi-grid-3x3"></i>
+                Post
+            </div>
+            <div class="tab-item">
+                <i class="bi bi-play-btn"></i>
+                Reels
+            </div>
+            <div class="tab-item">
+                <i class="bi bi-person-square"></i>
+                Taggati
+            </div>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="photo-grid">
+            <!-- Post 1 -->
+            <a href="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery"
+                data-caption="✨ L'arte dello Shiatsu: equilibrio tra corpo e mente">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 1">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 234</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 18</div>
+                </div>
+            </a>
+
+            <!-- Post 2 - Quote -->
+            <div class="photo-item quote-post">
+                <div class="quote-text">"L'equilibrio del corpo inizia dalle mani"</div>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 456</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 32</div>
+                </div>
+            </div>
+
+            <!-- Post 3 -->
+            <a href="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="🙌 Trattamento Shiatsu tradizionale">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 3">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 189</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 12</div>
+                </div>
+            </a>
+
+            <!-- Post 4 - Reel -->
+            <a href="https://www.youtube.com/watch?v=srR9vtf8Zfc" class="photo-item" data-fancybox
+                data-caption="🎬 Cos'è lo Shiatsu? Scoprilo in questo video">
+                <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 4">
+                <i class="bi bi-play-circle-fill photo-type-icon"></i>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-play-fill"></i> 5.2K</div>
+                </div>
+            </a>
+
+            <!-- Post 5 -->
+            <a href="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="🌸 Ambiente rilassante per il tuo benessere">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 5">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 312</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 24</div>
+                </div>
+            </a>
+
+            <!-- Post 6 - Quote -->
+            <div class="photo-item quote-post">
+                <div class="quote-text">"Prenditi cura di te, un tocco alla volta"</div>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 528</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 45</div>
+                </div>
+            </div>
+
+            <!-- Post 7 -->
+            <a href="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="✨ Dettaglio del trattamento">
+                <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 7">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 276</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 19</div>
+                </div>
+            </a>
+
+            <!-- Post 8 - Carousel -->
+            <a href="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="📸 5 benefici dello Shiatsu">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 8">
+                <i class="bi bi-copy photo-type-icon"></i>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 412</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 38</div>
+                </div>
+            </a>
+
+            <!-- Post 9 -->
+            <a href="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="🕯️ Atmosfera zen nel nostro studio">
+                <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 9">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 198</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 15</div>
+                </div>
+            </a>
+
+            <!-- Post 10 - Quote -->
+            <div class="photo-item quote-post">
+                <div class="quote-text">"Il corpo parla, impara ad ascoltarlo"</div>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 389</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 28</div>
+                </div>
+            </div>
+
+            <!-- Post 11 -->
+            <a href="https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                class="photo-item" data-fancybox="gallery" data-caption="⭐ Testimonianza di un cliente soddisfatto">
+                <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 11">
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-heart-fill"></i> 267</div>
+                    <div class="photo-stat"><i class="bi bi-chat-fill"></i> 22</div>
+                </div>
+            </a>
+
+            <!-- Post 12 - Reel -->
+            <a href="https://www.youtube.com/watch?v=srR9vtf8Zfc" class="photo-item" data-fancybox
+                data-caption="🎬 Tecniche di auto-shiatsu da fare a casa">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Post 12">
+                <i class="bi bi-play-circle-fill photo-type-icon"></i>
+                <div class="photo-overlay">
+                    <div class="photo-stat"><i class="bi bi-play-fill"></i> 8.1K</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="insta-footer">
+            <p>
+                <a href="#">Informazioni</a>
+                <a href="#">Guida</a>
+                <a href="#">Privacy</a>
+                <a href="#">Condizioni</a>
+            </p>
+            <a href="index.html" class="back-to-site">
+                <i class="bi bi-arrow-left"></i>
+                Torna al Sito Web
+            </a>
+            <p style="margin-top: 20px;">© 2026 Shiatsu Marizete</p>
+        </footer>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="index.html"><i class="bi bi-house-door"></i></a>
+            <a href="#"><i class="bi bi-search"></i></a>
+            <a href="#"><i class="bi bi-plus-square"></i></a>
+            <a href="#"><i class="bi bi-play-btn"></i></a>
+            <a href="#" class="active"><i class="bi bi-person-circle"></i></a>
+        </div>
+    </nav>
+
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Initialize Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            Toolbar: {
+                display: ["zoom", "close"]
+            }
+        });
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab-item');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Follow button toggle
+        const followBtn = document.querySelector('.btn-follow');
+        let isFollowing = false;
+
+        followBtn.addEventListener('click', () => {
+            isFollowing = !isFollowing;
+            if (isFollowing) {
+                followBtn.textContent = 'Seguiti ✓';
+                followBtn.style.background = 'var(--light-dark)';
+                followBtn.style.color = 'var(--dark)';
+            } else {
+                followBtn.textContent = 'Segui';
+                followBtn.style.background = '#0095f6';
+                followBtn.style.color = '#ffffff';
+            }
+        });
+
+        // Animate follower count on follow
+        const followerCount = document.querySelector('.stat-number');
+        followBtn.addEventListener('click', () => {
+            let count = parseInt(followerCount.textContent.replace('.', ''));
+            if (isFollowing) {
+                count++;
+            } else {
+                count--;
+            }
+            followerCount.textContent = count.toLocaleString('it-IT');
+        });
+    </script>
+
+</body>
+
+</html>
